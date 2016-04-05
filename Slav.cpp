@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <iterator>
 #include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -21,7 +22,7 @@ void Slav::init()
 
 Slav::Slav()
 {
-	static int amountOfNames = (init(), names.size());
+	static int amountOfNames = (init(), names.size()); //leniwa inicjalizacja
 	_name = names[rand() % amountOfNames];
 	_id = _counter++;
 }
@@ -29,4 +30,9 @@ Slav::Slav()
 string Slav::description()
 {
 	return string("  ") + _name + " [" + to_string(_id) + "]";
+}
+
+_sex Slav::sex()
+{
+	if (_name[_name.size()-1]=='a') return female; else return male;
 }
